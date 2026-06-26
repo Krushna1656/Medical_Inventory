@@ -1,2 +1,1 @@
-Ongoing Project 
-Soon be ready(:
+Presenting you Standalone Desktop Application for medical inventory management
