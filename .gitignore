@@ -1,0 +1,7 @@
+.med-admin/
+.gradle/
+.gradle-home/
+build/
+bin/
+*.class
+*.log

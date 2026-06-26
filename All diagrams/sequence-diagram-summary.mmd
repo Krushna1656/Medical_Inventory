@@ -1,0 +1,52 @@
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Calibri, Arial, sans-serif",
+    "fontSize": "13px",
+    "primaryColor": "#ffffff",
+    "secondaryColor": "#ffffff",
+    "tertiaryColor": "#ffffff",
+    "primaryTextColor": "#1f1f1f",
+    "lineColor": "#7f7f7f",
+    "signalColor": "#7f7f7f",
+    "signalTextColor": "#1f1f1f",
+    "actorBorder": "#7f7f7f",
+    "actorBkg": "#ffffff",
+    "actorTextColor": "#1f1f1f",
+    "labelBoxBkgColor": "#ffffff",
+    "labelBoxBorderColor": "#7f7f7f",
+    "labelTextColor": "#1f1f1f",
+    "noteBkgColor": "#ffffff",
+    "noteBorderColor": "#7f7f7f",
+    "noteTextColor": "#1f1f1f",
+    "activationBkgColor": "#ffffff",
+    "activationBorderColor": "#7f7f7f",
+    "sequenceNumberColor": "#1f1f1f"
+  },
+  "sequence": {
+    "mirrorActors": false,
+    "showSequenceNumbers": false
+  }
+}}%%
+sequenceDiagram
+    actor Admin
+    participant App as MediCore<br/>System
+    participant DB as Database
+
+    Admin->>App: Submit stock<br/>transaction
+    App->>App: Validate input
+
+    alt Invalid input
+        App-->>Admin: Show validation<br/>error
+    else Valid input
+        App->>DB: Check medicine and<br/>current stock
+
+        alt Medicine missing or<br/>stock too low
+            DB-->>App: Reject update
+            App-->>Admin: Show failure<br/>message
+        else Update allowed
+            App->>DB: Save stock update
+            DB-->>App: Commit changes
+            App-->>Admin: Show updated<br/>inventory
+        end
+    end
