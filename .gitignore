@@ -5,3 +5,11 @@ build/
 bin/
 *.class
 *.log
+All diagrams/
+*.pdf
+*.docx
+*.png
+*.jpeg
+*.jpg
+*.svg
+*.mmd
